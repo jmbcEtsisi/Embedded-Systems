@@ -1,0 +1,1206 @@
+
+
+Microchip Technology PIC LITE Macro Assembler V1.44 build -154322312 
+                                                                                               Sat Nov 25 18:29:43 2017
+
+Microchip Technology Omniscient Code Generator v1.44 (Free mode) build 201709140600
+     1                           	processor	16F886
+     2                           	opt	pw 120
+     3                           	opt	lm
+     4                           	psect	idataBANK0,global,class=CODE,delta=2
+     5                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     6                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1
+     7                           	psect	bssBANK0,global,class=BANK0,space=1,delta=1
+     8                           	psect	dataBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+    10                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+    11                           	psect	maintext,global,class=CODE,split=1,delta=2
+    12                           	psect	text1,local,class=CODE,merge=1,delta=2
+    13                           	psect	text2,local,class=CODE,merge=1,delta=2
+    14                           	psect	text3,local,class=CODE,merge=1,delta=2,group=2
+    15                           	psect	text4,local,class=CODE,merge=1,delta=2
+    16                           	psect	text5,local,class=CODE,merge=1,delta=2
+    17                           	psect	intentry,global,class=CODE,delta=2
+    18                           	psect	text6,local,class=CODE,merge=1,delta=2
+    19                           	psect	text7,local,class=CODE,merge=1,delta=2
+    20                           	dabs	1,0x7E,2
+    21  0000                     
+    22                           ; Version 1.44
+    23                           ; Generated 14/09/2017 GMT
+    24                           ; 
+    25                           ; Copyright © 2017, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    26                           ; All rights reserved.
+    27                           ; 
+    28                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    29                           ; 
+    30                           ; Redistribution and use in source and binary forms, with or without modification, are
+    31                           ; permitted provided that the following conditions are met:
+    32                           ; 
+    33                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    34                           ;        conditions and the following disclaimer.
+    35                           ; 
+    36                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    37                           ;        of conditions and the following disclaimer in the documentation and/or other
+    38                           ;        materials provided with the distribution.
+    39                           ; 
+    40                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    41                           ;        software without specific prior written permission.
+    42                           ; 
+    43                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    44                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    45                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    46                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    47                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    48                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    49                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    50                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    51                           ; 
+    52                           ; 
+    53                           ; Code-generator required, PIC16F886 Definitions
+    54                           ; 
+    55                           ; SFR Addresses
+    56  0000                     	;# 
+    57  0001                     	;# 
+    58  0002                     	;# 
+    59  0003                     	;# 
+    60  0004                     	;# 
+    61  0005                     	;# 
+    62  0006                     	;# 
+    63  0007                     	;# 
+    64  0009                     	;# 
+    65  000A                     	;# 
+    66  000B                     	;# 
+    67  000C                     	;# 
+    68  000D                     	;# 
+    69  000E                     	;# 
+    70  000E                     	;# 
+    71  000F                     	;# 
+    72  0010                     	;# 
+    73  0011                     	;# 
+    74  0012                     	;# 
+    75  0013                     	;# 
+    76  0014                     	;# 
+    77  0015                     	;# 
+    78  0015                     	;# 
+    79  0016                     	;# 
+    80  0017                     	;# 
+    81  0018                     	;# 
+    82  0019                     	;# 
+    83  001A                     	;# 
+    84  001B                     	;# 
+    85  001B                     	;# 
+    86  001C                     	;# 
+    87  001D                     	;# 
+    88  001E                     	;# 
+    89  001F                     	;# 
+    90  0081                     	;# 
+    91  0085                     	;# 
+    92  0086                     	;# 
+    93  0087                     	;# 
+    94  0089                     	;# 
+    95  008C                     	;# 
+    96  008D                     	;# 
+    97  008E                     	;# 
+    98  008F                     	;# 
+    99  0090                     	;# 
+   100  0091                     	;# 
+   101  0092                     	;# 
+   102  0093                     	;# 
+   103  0093                     	;# 
+   104  0093                     	;# 
+   105  0094                     	;# 
+   106  0095                     	;# 
+   107  0096                     	;# 
+   108  0097                     	;# 
+   109  0098                     	;# 
+   110  0099                     	;# 
+   111  009A                     	;# 
+   112  009B                     	;# 
+   113  009C                     	;# 
+   114  009D                     	;# 
+   115  009E                     	;# 
+   116  009F                     	;# 
+   117  0105                     	;# 
+   118  0107                     	;# 
+   119  0108                     	;# 
+   120  0109                     	;# 
+   121  010C                     	;# 
+   122  010C                     	;# 
+   123  010D                     	;# 
+   124  010E                     	;# 
+   125  010F                     	;# 
+   126  0185                     	;# 
+   127  0187                     	;# 
+   128  0188                     	;# 
+   129  0189                     	;# 
+   130  018C                     	;# 
+   131  018D                     	;# 
+   132                           
+   133                           	psect	idataBANK0
+   134  0165                     __pidataBANK0:	
+   135                           
+   136                           ;initializer for _t_sys_switch
+   137  0165  3401               	retlw	1
+   138  000B                     _INTCONbits	set	11
+   139  0001                     _TMR0	set	1
+   140  001E                     _ADRESH	set	30
+   141  001F                     _ADCON0bits	set	31
+   142  0086                     _TRISB	set	134
+   143  0085                     _TRISA	set	133
+   144  0081                     _OPTION_REGbits	set	129
+   145  009E                     _ADRESL	set	158
+   146  040C                     _T0SE	set	1036
+   147  0189                     _ANSELH	set	393
+   148  0188                     _ANSEL	set	392
+   149                           
+   150                           	psect	cinit
+   151  0015                     start_initialization:	
+   152                           ; #config settings
+   153                           
+   154  0015                     __initialization:	
+   155                           
+   156                           ; Initialize objects allocated to BANK0
+   157  0015  120A  118A  2165   	fcall	__pidataBANK0	;fetch initializer
+   158  0018  00B3               	movwf	__pdataBANK0& (0+127)
+   159                           
+   160                           ; Clear objects allocated to BANK0
+   161  0019  01AB               	clrf	__pbssBANK0& (0+127)
+   162  001A  01AC               	clrf	(__pbssBANK0+1)& (0+127)
+   163  001B  01AD               	clrf	(__pbssBANK0+2)& (0+127)
+   164  001C  01AE               	clrf	(__pbssBANK0+3)& (0+127)
+   165  001D  01AF               	clrf	(__pbssBANK0+4)& (0+127)
+   166  001E  01B0               	clrf	(__pbssBANK0+5)& (0+127)
+   167  001F  01B1               	clrf	(__pbssBANK0+6)& (0+127)
+   168  0020  01B2               	clrf	(__pbssBANK0+7)& (0+127)
+   169                           
+   170                           ; Clear objects allocated to COMMON
+   171  0021  01F0               	clrf	__pbssCOMMON& (0+127)
+   172  0022  01F1               	clrf	(__pbssCOMMON+1)& (0+127)
+   173  0023  01F2               	clrf	(__pbssCOMMON+2)& (0+127)
+   174  0024  01F3               	clrf	(__pbssCOMMON+3)& (0+127)
+   175  0025  01F4               	clrf	(__pbssCOMMON+4)& (0+127)
+   176  0026  01F5               	clrf	(__pbssCOMMON+5)& (0+127)
+   177  0027  01F6               	clrf	(__pbssCOMMON+6)& (0+127)
+   178  0028                     end_of_initialization:	
+   179                           ;End of C runtime variable initialization code
+   180                           
+   181  0028                     __end_of__initialization:	
+   182  0028  0183               	clrf	3
+   183  0029  120A  118A  2901   	ljmp	_main	;jump to C main() function
+   184                           
+   185                           	psect	bssCOMMON
+   186  0070                     __pbssCOMMON:	
+   187  0070                     _millibolts_aux:	
+   188  0070                     	ds	2
+   189  0072                     _t_actual:	
+   190  0072                     	ds	2
+   191  0074                     _t_sys_update:	
+   192  0074                     	ds	1
+   193  0075                     _t_change_user:	
+   194  0075                     	ds	1
+   195  0076                     _t_change:	
+   196  0076                     	ds	1
+   197                           
+   198                           	psect	bssBANK0
+   199  002B                     __pbssBANK0:	
+   200  002B                     _t_sys_cont:	
+   201  002B                     	ds	2
+   202  002D                     _millibolts:	
+   203  002D                     	ds	2
+   204  002F                     _t_ant:	
+   205  002F                     	ds	2
+   206  0031                     _adc_val:	
+   207  0031                     	ds	2
+   208                           
+   209                           	psect	dataBANK0
+   210  0033                     __pdataBANK0:	
+   211  0033                     _t_sys_switch:	
+   212  0033                     	ds	1
+   213                           
+   214                           	psect	cstackCOMMON
+   215  0077                     __pcstackCOMMON:	
+   216  0077                     ?_check_t_voltage:	
+   217  0077                     ?_check_t_changes:	
+   218                           ; 1 bytes @ 0x0
+   219                           
+   220  0077                     ??_check_t_changes:	
+   221                           ; 1 bytes @ 0x0
+   222                           
+   223  0077                     ?_t_bolt_value:	
+   224                           ; 1 bytes @ 0x0
+   225                           
+   226  0077                     ?_t_set:	
+   227                           ; 1 bytes @ 0x0
+   228                           
+   229  0077                     ?_init_timer:	
+   230                           ; 1 bytes @ 0x0
+   231                           
+   232  0077                     ?_timer_value_set:	
+   233                           ; 1 bytes @ 0x0
+   234                           
+   235  0077                     ?_main:	
+   236                           ; 1 bytes @ 0x0
+   237                           
+   238  0077                     t_set@t_next:	
+   239                           ; 1 bytes @ 0x0
+   240                           
+   241                           
+   242                           ; 2 bytes @ 0x0
+   243  0077                     	ds	2
+   244  0079                     ??_t_set:	
+   245  0079                     ??_init_timer:	
+   246                           ; 1 bytes @ 0x2
+   247                           
+   248                           
+   249                           ; 1 bytes @ 0x2
+   250  0079                     	ds	4
+   251                           
+   252                           	psect	cstackBANK0
+   253  0020                     __pcstackBANK0:	
+   254  0020                     ??_check_t_voltage:	
+   255  0020                     ??_timer_value_set:	
+   256                           ; 1 bytes @ 0x0
+   257                           
+   258  0020                     ?___awdiv:	
+   259                           ; 1 bytes @ 0x0
+   260                           
+   261  0020                     ___awdiv@divisor:	
+   262                           ; 2 bytes @ 0x0
+   263                           
+   264                           
+   265                           ; 2 bytes @ 0x0
+   266  0020                     	ds	2
+   267  0022                     ___awdiv@dividend:	
+   268                           
+   269                           ; 2 bytes @ 0x2
+   270  0022                     	ds	2
+   271  0024                     ??___awdiv:	
+   272                           
+   273                           ; 1 bytes @ 0x4
+   274  0024                     	ds	1
+   275  0025                     ___awdiv@counter:	
+   276                           
+   277                           ; 1 bytes @ 0x5
+   278  0025                     	ds	1
+   279  0026                     ___awdiv@sign:	
+   280                           
+   281                           ; 1 bytes @ 0x6
+   282  0026                     	ds	1
+   283  0027                     ___awdiv@quotient:	
+   284                           
+   285                           ; 2 bytes @ 0x7
+   286  0027                     	ds	2
+   287  0029                     ??_t_bolt_value:	
+   288                           
+   289                           ; 1 bytes @ 0x9
+   290  0029                     	ds	2
+   291  002B                     ??_main:	
+   292                           
+   293                           	psect	maintext
+   294  0101                     __pmaintext:	
+   295                           ; 1 bytes @ 0xB
+   296 ;;
+   297 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   298 ;;
+   299 ;; *************** function _main *****************
+   300 ;; Defined at:
+   301 ;;		line 132 in file "Sensor.c"
+   302 ;; Parameters:    Size  Location     Type
+   303 ;;		None
+   304 ;; Auto vars:     Size  Location     Type
+   305 ;;		None
+   306 ;; Return value:  Size  Location     Type
+   307 ;;                  1    wreg      void 
+   308 ;; Registers used:
+   309 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   310 ;; Tracked objects:
+   311 ;;		On entry : B00/0
+   312 ;;		On exit  : 0/0
+   313 ;;		Unchanged: 0/0
+   314 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   315 ;;      Params:         0       0       0       0       0
+   316 ;;      Locals:         0       0       0       0       0
+   317 ;;      Temps:          0       0       0       0       0
+   318 ;;      Totals:         0       0       0       0       0
+   319 ;;Total ram usage:        0 bytes
+   320 ;; Hardware stack levels required when called:    4
+   321 ;; This function calls:
+   322 ;;		_check_t_voltage
+   323 ;;		_t_bolt_value
+   324 ;;		_timer_value_set
+   325 ;; This function is called by:
+   326 ;;		Startup code after reset
+   327 ;; This function uses a non-reentrant model
+   328 ;;
+   329                           
+   330                           
+   331                           ;psect for function _main
+   332  0101                     _main:	
+   333                           
+   334                           ;Sensor.c: 134: T0SE = 0;
+   335                           
+   336                           ;incstack = 0
+   337                           ; Regs used in _main: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   338  0101  1683               	bsf	3,5	;RP0=1, select bank1
+   339  0102  1303               	bcf	3,6	;RP1=0, select bank1
+   340  0103  1201               	bcf	1,4	;volatile
+   341                           
+   342                           ;Sensor.c: 138: TRISA = 1;
+   343  0104  3001               	movlw	1
+   344  0105  0085               	movwf	5	;volatile
+   345                           
+   346                           ;Sensor.c: 139: TRISB = 0;
+   347  0106  0186               	clrf	6	;volatile
+   348                           
+   349                           ;Sensor.c: 141: ANSEL = 0;
+   350  0107  1683               	bsf	3,5	;RP0=1, select bank3
+   351  0108  1703               	bsf	3,6	;RP1=1, select bank3
+   352  0109  0188               	clrf	8	;volatile
+   353                           
+   354                           ;Sensor.c: 142: ANSELH= 0;
+   355  010A  0189               	clrf	9	;volatile
+   356                           
+   357                           ;Sensor.c: 145: timer_value_set();
+   358  010B  120A  118A  2158  120A  118A  	fcall	_timer_value_set
+   359                           
+   360                           ;Sensor.c: 146: t_bolt_value();
+   361  0110  120A  118A  2087  120A  118A  	fcall	_t_bolt_value
+   362                           
+   363                           ;Sensor.c: 147: check_t_voltage();
+   364  0115  120A  118A  2122  120A  118A  	fcall	_check_t_voltage
+   365  011A                     l862:	
+   366                           ;Sensor.c: 148: while(t_sys_switch);
+   367                           
+   368  011A  1283               	bcf	3,5	;RP0=0, select bank0
+   369  011B  1303               	bcf	3,6	;RP1=0, select bank0
+   370  011C  0833               	movf	_t_sys_switch,w
+   371  011D  1D03               	btfss	3,2
+   372  011E  291A               	goto	l862
+   373  011F  120A  118A  2812   	ljmp	start
+   374  0122                     __end_of_main:	
+   375                           
+   376                           	psect	text1
+   377  0158                     __ptext1:	
+   378 ;; *************** function _timer_value_set *****************
+   379 ;; Defined at:
+   380 ;;		line 113 in file "Sensor.c"
+   381 ;; Parameters:    Size  Location     Type
+   382 ;;		None
+   383 ;; Auto vars:     Size  Location     Type
+   384 ;;		None
+   385 ;; Return value:  Size  Location     Type
+   386 ;;                  1    wreg      void 
+   387 ;; Registers used:
+   388 ;;		wreg, status,2, status,0
+   389 ;; Tracked objects:
+   390 ;;		On entry : 0/0
+   391 ;;		On exit  : 0/0
+   392 ;;		Unchanged: 0/0
+   393 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   394 ;;      Params:         0       0       0       0       0
+   395 ;;      Locals:         0       0       0       0       0
+   396 ;;      Temps:          0       0       0       0       0
+   397 ;;      Totals:         0       0       0       0       0
+   398 ;;Total ram usage:        0 bytes
+   399 ;; Hardware stack levels used:    1
+   400 ;; Hardware stack levels required when called:    2
+   401 ;; This function calls:
+   402 ;;		Nothing
+   403 ;; This function is called by:
+   404 ;;		_main
+   405 ;; This function uses a non-reentrant model
+   406 ;;
+   407                           
+   408                           
+   409                           ;psect for function _timer_value_set
+   410  0158                     _timer_value_set:	
+   411                           
+   412                           ;Sensor.c: 117: OPTION_REGbits.PS = 0b110;
+   413                           
+   414                           ;incstack = 0
+   415                           ; Regs used in _timer_value_set: [wreg+status,2+status,0]
+   416  0158  1683               	bsf	3,5	;RP0=1, select bank1
+   417  0159  1303               	bcf	3,6	;RP1=0, select bank1
+   418  015A  0801               	movf	1,w	;volatile
+   419  015B  39F8               	andlw	-8
+   420  015C  3806               	iorlw	6
+   421  015D  0081               	movwf	1	;volatile
+   422                           
+   423                           ;Sensor.c: 118: OPTION_REGbits.nRBPU = 1;
+   424  015E  1781               	bsf	1,7	;volatile
+   425                           
+   426                           ;Sensor.c: 119: OPTION_REGbits.T0CS = 0;
+   427  015F  1281               	bcf	1,5	;volatile
+   428                           
+   429                           ;Sensor.c: 120: OPTION_REGbits.T0SE = 0;
+   430  0160  1201               	bcf	1,4	;volatile
+   431                           
+   432                           ;Sensor.c: 121: OPTION_REGbits.PSA = 0;
+   433  0161  1181               	bcf	1,3	;volatile
+   434                           
+   435                           ;Sensor.c: 124: INTCONbits.GIE = 1;
+   436  0162  178B               	bsf	11,7	;volatile
+   437                           
+   438                           ;Sensor.c: 125: INTCONbits.T0IE = 1;
+   439  0163  168B               	bsf	11,5	;volatile
+   440  0164  0008               	return
+   441  0165                     __end_of_timer_value_set:	
+   442                           
+   443                           	psect	text2
+   444  0087                     __ptext2:	
+   445 ;; *************** function _t_bolt_value *****************
+   446 ;; Defined at:
+   447 ;;		line 65 in file "Sensor.c"
+   448 ;; Parameters:    Size  Location     Type
+   449 ;;		None
+   450 ;; Auto vars:     Size  Location     Type
+   451 ;;		None
+   452 ;; Return value:  Size  Location     Type
+   453 ;;                  1    wreg      void 
+   454 ;; Registers used:
+   455 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   456 ;; Tracked objects:
+   457 ;;		On entry : 0/0
+   458 ;;		On exit  : 0/0
+   459 ;;		Unchanged: 0/0
+   460 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   461 ;;      Params:         0       0       0       0       0
+   462 ;;      Locals:         0       0       0       0       0
+   463 ;;      Temps:          0       2       0       0       0
+   464 ;;      Totals:         0       2       0       0       0
+   465 ;;Total ram usage:        2 bytes
+   466 ;; Hardware stack levels used:    1
+   467 ;; Hardware stack levels required when called:    3
+   468 ;; This function calls:
+   469 ;;		___awdiv
+   470 ;; This function is called by:
+   471 ;;		_main
+   472 ;; This function uses a non-reentrant model
+   473 ;;
+   474                           
+   475                           
+   476                           ;psect for function _t_bolt_value
+   477  0087                     _t_bolt_value:	
+   478                           
+   479                           ;Sensor.c: 67: ADCON0bits.GO = 1;
+   480                           
+   481                           ;incstack = 0
+   482                           ; Regs used in _t_bolt_value: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   483  0087  1283               	bcf	3,5	;RP0=0, select bank0
+   484  0088  1303               	bcf	3,6	;RP1=0, select bank0
+   485  0089  149F               	bsf	31,1	;volatile
+   486  008A                     l55:	
+   487                           ;Sensor.c: 69: while (!ADCON0bits.nDONE);
+   488                           
+   489  008A  1C9F               	btfss	31,1	;volatile
+   490  008B  288A               	goto	l55
+   491                           
+   492                           ;Sensor.c: 70: adc_val = (ADRESH << 8);
+   493  008C  081E               	movf	30,w	;volatile
+   494  008D  00A9               	movwf	??_t_bolt_value
+   495  008E  01AA               	clrf	??_t_bolt_value+1
+   496  008F  0829               	movf	??_t_bolt_value,w
+   497  0090  00AA               	movwf	??_t_bolt_value+1
+   498  0091  01A9               	clrf	??_t_bolt_value
+   499  0092  0829               	movf	??_t_bolt_value,w
+   500  0093  00B1               	movwf	_adc_val
+   501  0094  082A               	movf	??_t_bolt_value+1,w
+   502  0095  00B2               	movwf	_adc_val+1
+   503                           
+   504                           ;Sensor.c: 71: adc_val |= ADRESL;
+   505  0096  1683               	bsf	3,5	;RP0=1, select bank1
+   506  0097  1303               	bcf	3,6	;RP1=0, select bank1
+   507  0098  081E               	movf	30,w	;volatile
+   508  0099  1283               	bcf	3,5	;RP0=0, select bank0
+   509  009A  1303               	bcf	3,6	;RP1=0, select bank0
+   510  009B  00A9               	movwf	??_t_bolt_value
+   511  009C  01AA               	clrf	??_t_bolt_value+1
+   512  009D  0829               	movf	??_t_bolt_value,w
+   513  009E  04B1               	iorwf	_adc_val,f
+   514  009F  082A               	movf	??_t_bolt_value+1,w
+   515  00A0  04B2               	iorwf	_adc_val+1,f
+   516                           
+   517                           ;Sensor.c: 75: millibolts = (8192 / adc_val) * 1024;
+   518  00A1  0832               	movf	_adc_val+1,w
+   519  00A2  00A1               	movwf	___awdiv@divisor+1
+   520  00A3  0831               	movf	_adc_val,w
+   521  00A4  00A0               	movwf	___awdiv@divisor
+   522  00A5  3000               	movlw	0
+   523  00A6  00A2               	movwf	___awdiv@dividend
+   524  00A7  3020               	movlw	32
+   525  00A8  00A3               	movwf	___awdiv@dividend+1
+   526  00A9  120A  118A  202C  120A  118A  	fcall	___awdiv
+   527  00AE  1283               	bcf	3,5	;RP0=0, select bank0
+   528  00AF  1303               	bcf	3,6	;RP1=0, select bank0
+   529  00B0  0820               	movf	?___awdiv,w
+   530  00B1  00A9               	movwf	??_t_bolt_value
+   531  00B2  0821               	movf	?___awdiv+1,w
+   532  00B3  00AA               	movwf	??_t_bolt_value+1
+   533  00B4  300A               	movlw	10
+   534  00B5  00FF               	movwf	127
+   535  00B6                     u505:	
+   536  00B6  1003               	clrc
+   537  00B7  0DA9               	rlf	??_t_bolt_value,f
+   538  00B8  0DAA               	rlf	??_t_bolt_value+1,f
+   539  00B9  0BFF               	decfsz	127,f
+   540  00BA  28B6               	goto	u505
+   541  00BB  0829               	movf	??_t_bolt_value,w
+   542  00BC  00AD               	movwf	_millibolts
+   543  00BD  082A               	movf	??_t_bolt_value+1,w
+   544  00BE  00AE               	movwf	_millibolts+1
+   545                           
+   546                           ;Sensor.c: 76: millibolts /= 8;
+   547  00BF  3008               	movlw	8
+   548  00C0  00A0               	movwf	___awdiv@divisor
+   549  00C1  3000               	movlw	0
+   550  00C2  00A1               	movwf	___awdiv@divisor+1
+   551  00C3  082E               	movf	_millibolts+1,w
+   552  00C4  00A3               	movwf	___awdiv@dividend+1
+   553  00C5  082D               	movf	_millibolts,w
+   554  00C6  00A2               	movwf	___awdiv@dividend
+   555  00C7  120A  118A  202C   	fcall	___awdiv
+   556  00CA  1283               	bcf	3,5	;RP0=0, select bank0
+   557  00CB  1303               	bcf	3,6	;RP1=0, select bank0
+   558  00CC  0821               	movf	?___awdiv+1,w
+   559  00CD  00AE               	movwf	_millibolts+1
+   560  00CE  0820               	movf	?___awdiv,w
+   561  00CF  00AD               	movwf	_millibolts
+   562  00D0  0008               	return
+   563  00D1                     __end_of_t_bolt_value:	
+   564                           
+   565                           	psect	text3
+   566  002C                     __ptext3:	
+   567 ;; *************** function ___awdiv *****************
+   568 ;; Defined at:
+   569 ;;		line 6 in file "/opt/microchip/xc8/v1.44/sources/common/awdiv.c"
+   570 ;; Parameters:    Size  Location     Type
+   571 ;;  divisor         2    0[BANK0 ] int 
+   572 ;;  dividend        2    2[BANK0 ] int 
+   573 ;; Auto vars:     Size  Location     Type
+   574 ;;  quotient        2    7[BANK0 ] int 
+   575 ;;  sign            1    6[BANK0 ] unsigned char 
+   576 ;;  counter         1    5[BANK0 ] unsigned char 
+   577 ;; Return value:  Size  Location     Type
+   578 ;;                  2    0[BANK0 ] int 
+   579 ;; Registers used:
+   580 ;;		wreg, status,2, status,0
+   581 ;; Tracked objects:
+   582 ;;		On entry : 0/0
+   583 ;;		On exit  : 0/0
+   584 ;;		Unchanged: 0/0
+   585 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   586 ;;      Params:         0       4       0       0       0
+   587 ;;      Locals:         0       4       0       0       0
+   588 ;;      Temps:          0       1       0       0       0
+   589 ;;      Totals:         0       9       0       0       0
+   590 ;;Total ram usage:        9 bytes
+   591 ;; Hardware stack levels used:    1
+   592 ;; Hardware stack levels required when called:    2
+   593 ;; This function calls:
+   594 ;;		Nothing
+   595 ;; This function is called by:
+   596 ;;		_t_bolt_value
+   597 ;; This function uses a non-reentrant model
+   598 ;;
+   599                           
+   600                           
+   601                           ;psect for function ___awdiv
+   602  002C                     ___awdiv:	
+   603                           
+   604                           ;incstack = 0
+   605                           ; Regs used in ___awdiv: [wreg+status,2+status,0]
+   606  002C  1283               	bcf	3,5	;RP0=0, select bank0
+   607  002D  1303               	bcf	3,6	;RP1=0, select bank0
+   608  002E  01A6               	clrf	___awdiv@sign
+   609  002F  1FA1               	btfss	___awdiv@divisor+1,7
+   610  0030  2838               	goto	l780
+   611  0031  09A0               	comf	___awdiv@divisor,f
+   612  0032  09A1               	comf	___awdiv@divisor+1,f
+   613  0033  0AA0               	incf	___awdiv@divisor,f
+   614  0034  1903               	skipnz
+   615  0035  0AA1               	incf	___awdiv@divisor+1,f
+   616  0036  01A6               	clrf	___awdiv@sign
+   617  0037  0AA6               	incf	___awdiv@sign,f
+   618  0038                     l780:	
+   619  0038  1FA3               	btfss	___awdiv@dividend+1,7
+   620  0039  2843               	goto	l786
+   621  003A  09A2               	comf	___awdiv@dividend,f
+   622  003B  09A3               	comf	___awdiv@dividend+1,f
+   623  003C  0AA2               	incf	___awdiv@dividend,f
+   624  003D  1903               	skipnz
+   625  003E  0AA3               	incf	___awdiv@dividend+1,f
+   626  003F  3001               	movlw	1
+   627  0040  00A4               	movwf	??___awdiv
+   628  0041  0824               	movf	??___awdiv,w
+   629  0042  06A6               	xorwf	___awdiv@sign,f
+   630  0043                     l786:	
+   631  0043  01A7               	clrf	___awdiv@quotient
+   632  0044  01A8               	clrf	___awdiv@quotient+1
+   633  0045  0820               	movf	___awdiv@divisor,w
+   634  0046  0421               	iorwf	___awdiv@divisor+1,w
+   635  0047  1903               	btfsc	3,2
+   636  0048  287A               	goto	l808
+   637  0049  01A5               	clrf	___awdiv@counter
+   638  004A  0AA5               	incf	___awdiv@counter,f
+   639  004B                     l796:	
+   640  004B  1BA1               	btfsc	___awdiv@divisor+1,7
+   641  004C  2859               	goto	l798
+   642  004D  3001               	movlw	1
+   643  004E                     u405:	
+   644  004E  1003               	clrc
+   645  004F  0DA0               	rlf	___awdiv@divisor,f
+   646  0050  0DA1               	rlf	___awdiv@divisor+1,f
+   647  0051  3EFF               	addlw	-1
+   648  0052  1D03               	skipz
+   649  0053  284E               	goto	u405
+   650  0054  3001               	movlw	1
+   651  0055  00A4               	movwf	??___awdiv
+   652  0056  0824               	movf	??___awdiv,w
+   653  0057  07A5               	addwf	___awdiv@counter,f
+   654  0058  284B               	goto	l796
+   655  0059                     l798:	
+   656  0059  3001               	movlw	1
+   657  005A                     u425:	
+   658  005A  1003               	clrc
+   659  005B  0DA7               	rlf	___awdiv@quotient,f
+   660  005C  0DA8               	rlf	___awdiv@quotient+1,f
+   661  005D  3EFF               	addlw	-1
+   662  005E  1D03               	skipz
+   663  005F  285A               	goto	u425
+   664  0060  0821               	movf	___awdiv@divisor+1,w
+   665  0061  0223               	subwf	___awdiv@dividend+1,w
+   666  0062  1D03               	skipz
+   667  0063  2866               	goto	u435
+   668  0064  0820               	movf	___awdiv@divisor,w
+   669  0065  0222               	subwf	___awdiv@dividend,w
+   670  0066                     u435:	
+   671  0066  1C03               	skipc
+   672  0067  286F               	goto	l804
+   673  0068  0820               	movf	___awdiv@divisor,w
+   674  0069  02A2               	subwf	___awdiv@dividend,f
+   675  006A  0821               	movf	___awdiv@divisor+1,w
+   676  006B  1C03               	skipc
+   677  006C  03A3               	decf	___awdiv@dividend+1,f
+   678  006D  02A3               	subwf	___awdiv@dividend+1,f
+   679  006E  1427               	bsf	___awdiv@quotient,0
+   680  006F                     l804:	
+   681  006F  3001               	movlw	1
+   682  0070                     u445:	
+   683  0070  1003               	clrc
+   684  0071  0CA1               	rrf	___awdiv@divisor+1,f
+   685  0072  0CA0               	rrf	___awdiv@divisor,f
+   686  0073  3EFF               	addlw	-1
+   687  0074  1D03               	skipz
+   688  0075  2870               	goto	u445
+   689  0076  3001               	movlw	1
+   690  0077  02A5               	subwf	___awdiv@counter,f
+   691  0078  1D03               	btfss	3,2
+   692  0079  2859               	goto	l798
+   693  007A                     l808:	
+   694  007A  0826               	movf	___awdiv@sign,w
+   695  007B  1903               	btfsc	3,2
+   696  007C  2882               	goto	l812
+   697  007D  09A7               	comf	___awdiv@quotient,f
+   698  007E  09A8               	comf	___awdiv@quotient+1,f
+   699  007F  0AA7               	incf	___awdiv@quotient,f
+   700  0080  1903               	skipnz
+   701  0081  0AA8               	incf	___awdiv@quotient+1,f
+   702  0082                     l812:	
+   703  0082  0828               	movf	___awdiv@quotient+1,w
+   704  0083  00A1               	movwf	?___awdiv+1
+   705  0084  0827               	movf	___awdiv@quotient,w
+   706  0085  00A0               	movwf	?___awdiv
+   707  0086  0008               	return
+   708  0087                     __end_of___awdiv:	
+   709                           
+   710                           	psect	text4
+   711  0122                     __ptext4:	
+   712 ;; *************** function _check_t_voltage *****************
+   713 ;; Defined at:
+   714 ;;		line 50 in file "Sensor.c"
+   715 ;; Parameters:    Size  Location     Type
+   716 ;;		None
+   717 ;; Auto vars:     Size  Location     Type
+   718 ;;		None
+   719 ;; Return value:  Size  Location     Type
+   720 ;;                  1    wreg      void 
+   721 ;; Registers used:
+   722 ;;		wreg, status,2, btemp+1
+   723 ;; Tracked objects:
+   724 ;;		On entry : 0/0
+   725 ;;		On exit  : 0/0
+   726 ;;		Unchanged: 0/0
+   727 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   728 ;;      Params:         0       0       0       0       0
+   729 ;;      Locals:         0       0       0       0       0
+   730 ;;      Temps:          0       0       0       0       0
+   731 ;;      Totals:         0       0       0       0       0
+   732 ;;Total ram usage:        0 bytes
+   733 ;; Hardware stack levels used:    1
+   734 ;; Hardware stack levels required when called:    2
+   735 ;; This function calls:
+   736 ;;		Nothing
+   737 ;; This function is called by:
+   738 ;;		_main
+   739 ;; This function uses a non-reentrant model
+   740 ;;
+   741                           
+   742                           
+   743                           ;psect for function _check_t_voltage
+   744  0122                     _check_t_voltage:	
+   745                           
+   746                           ;Sensor.c: 52: if(millibolts >= 0 && millibolts <= 3) t_sys_switch = 1;
+   747                           
+   748                           ;incstack = 0
+   749                           ; Regs used in _check_t_voltage: [wreg+status,2+btemp+1]
+   750  0122  1283               	bcf	3,5	;RP0=0, select bank0
+   751  0123  1303               	bcf	3,6	;RP1=0, select bank0
+   752  0124  1BAE               	btfsc	_millibolts+1,7
+   753  0125  2936               	goto	l822
+   754  0126  082E               	movf	_millibolts+1,w
+   755  0127  3A80               	xorlw	128
+   756  0128  00FF               	movwf	127
+   757  0129  3080               	movlw	128
+   758  012A  027F               	subwf	127,w
+   759  012B  1D03               	skipz
+   760  012C  292F               	goto	u485
+   761  012D  3004               	movlw	4
+   762  012E  022D               	subwf	_millibolts,w
+   763  012F                     u485:	
+   764  012F  1803               	skipnc
+   765  0130  2936               	goto	l822
+   766  0131  1283               	bcf	3,5	;RP0=0, select bank0
+   767  0132  1303               	bcf	3,6	;RP1=0, select bank0
+   768  0133  01B3               	clrf	_t_sys_switch
+   769  0134  0AB3               	incf	_t_sys_switch,f
+   770  0135  0008               	return
+   771  0136                     l822:	
+   772                           
+   773                           ;Sensor.c: 53: else t_sys_switch = 0;
+   774  0136  1283               	bcf	3,5	;RP0=0, select bank0
+   775  0137  1303               	bcf	3,6	;RP1=0, select bank0
+   776  0138  01B3               	clrf	_t_sys_switch
+   777  0139  0008               	return
+   778  013A                     __end_of_check_t_voltage:	
+   779                           
+   780                           	psect	text5
+   781  00D1                     __ptext5:	
+   782 ;; *************** function _init_timer *****************
+   783 ;; Defined at:
+   784 ;;		line 97 in file "Sensor.c"
+   785 ;; Parameters:    Size  Location     Type
+   786 ;;		None
+   787 ;; Auto vars:     Size  Location     Type
+   788 ;;		None
+   789 ;; Return value:  Size  Location     Type
+   790 ;;                  1    wreg      void 
+   791 ;; Registers used:
+   792 ;;		wreg, status,2, status,0, pclath, cstack
+   793 ;; Tracked objects:
+   794 ;;		On entry : 0/0
+   795 ;;		On exit  : 0/0
+   796 ;;		Unchanged: 0/0
+   797 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   798 ;;      Params:         0       0       0       0       0
+   799 ;;      Locals:         0       0       0       0       0
+   800 ;;      Temps:          4       0       0       0       0
+   801 ;;      Totals:         4       0       0       0       0
+   802 ;;Total ram usage:        4 bytes
+   803 ;; Hardware stack levels used:    1
+   804 ;; Hardware stack levels required when called:    1
+   805 ;; This function calls:
+   806 ;;		_check_t_changes
+   807 ;;		_t_set
+   808 ;; This function is called by:
+   809 ;;		Interrupt level 1
+   810 ;; This function uses a non-reentrant model
+   811 ;;
+   812                           
+   813                           
+   814                           ;psect for function _init_timer
+   815  00D1                     _init_timer:	
+   816                           
+   817                           ;Sensor.c: 105: TMR0=60;
+   818  00D1  303C               	movlw	60
+   819  00D2  0081               	movwf	1	;volatile
+   820                           
+   821                           ;Sensor.c: 106: check_t_changes();
+   822  00D3  120A  118A  2149  120A  118A  	fcall	_check_t_changes
+   823                           
+   824                           ;Sensor.c: 107: if(t_change_user) t_set(t_actual);
+   825  00D8  0875               	movf	_t_change_user,w
+   826  00D9  1903               	btfsc	3,2
+   827  00DA  28E5               	goto	i1l748
+   828  00DB  0873               	movf	_t_actual+1,w
+   829  00DC  00F8               	movwf	t_set@t_next+1
+   830  00DD  0872               	movf	_t_actual,w
+   831  00DE  00F7               	movwf	t_set@t_next
+   832  00DF  120A  118A  213A  120A  118A  	fcall	_t_set
+   833  00E4  28ED               	goto	i1l750
+   834  00E5                     i1l748:	
+   835                           
+   836                           ;Sensor.c: 108: else t_sys_cont++;
+   837  00E5  3001               	movlw	1
+   838  00E6  1283               	bcf	3,5	;RP0=0, select bank0
+   839  00E7  1303               	bcf	3,6	;RP1=0, select bank0
+   840  00E8  07AB               	addwf	_t_sys_cont,f
+   841  00E9  1803               	skipnc
+   842  00EA  0AAC               	incf	_t_sys_cont+1,f
+   843  00EB  3000               	movlw	0
+   844  00EC  07AC               	addwf	_t_sys_cont+1,f
+   845  00ED                     i1l750:	
+   846                           
+   847                           ;Sensor.c: 109: if(t_sys_cont == 10) t_sys_update = 1;
+   848  00ED  300A               	movlw	10
+   849  00EE  1283               	bcf	3,5	;RP0=0, select bank0
+   850  00EF  1303               	bcf	3,6	;RP1=0, select bank0
+   851  00F0  062B               	xorwf	_t_sys_cont,w
+   852  00F1  042C               	iorwf	_t_sys_cont+1,w
+   853  00F2  1D03               	btfss	3,2
+   854  00F3  28F6               	goto	i1l69
+   855  00F4  01F4               	clrf	_t_sys_update
+   856  00F5  0AF4               	incf	_t_sys_update,f
+   857  00F6                     i1l69:	
+   858  00F6  087C               	movf	??_init_timer+3,w
+   859  00F7  00FF               	movwf	127
+   860  00F8  087B               	movf	??_init_timer+2,w
+   861  00F9  008A               	movwf	10
+   862  00FA  087A               	movf	??_init_timer+1,w
+   863  00FB  0084               	movwf	4
+   864  00FC  0E79               	swapf	??_init_timer^(0+-128),w
+   865  00FD  0083               	movwf	3
+   866  00FE  0EFE               	swapf	126,f
+   867  00FF  0E7E               	swapf	126,w
+   868  0100  0009               	retfie
+   869  0101                     __end_of_init_timer:	
+   870                           
+   871                           	psect	intentry
+   872  0004                     __pintentry:	
+   873                           ;incstack = 0
+   874                           ; Regs used in _init_timer: [wreg+status,2+status,0+pclath+cstack]
+   875                           
+   876  0004                     interrupt_function:	
+   877  007E                     saved_w	set	btemp
+   878  0004  00FE               	movwf	btemp
+   879  0005  0E03               	swapf	3,w
+   880  0006  00F9               	movwf	??_init_timer
+   881  0007  0804               	movf	4,w
+   882  0008  00FA               	movwf	??_init_timer+1
+   883  0009  080A               	movf	10,w
+   884  000A  00FB               	movwf	??_init_timer+2
+   885  000B  1283               	bcf	3,5	;RP0=0, select bank0
+   886  000C  1303               	bcf	3,6	;RP1=0, select bank0
+   887  000D  087F               	movf	btemp+1,w
+   888  000E  00FC               	movwf	??_init_timer+3
+   889  000F  120A  118A  28D1   	ljmp	_init_timer
+   890                           
+   891                           	psect	text6
+   892  013A                     __ptext6:	
+   893 ;; *************** function _t_set *****************
+   894 ;; Defined at:
+   895 ;;		line 80 in file "Sensor.c"
+   896 ;; Parameters:    Size  Location     Type
+   897 ;;  t_next          2    0[COMMON] unsigned int 
+   898 ;; Auto vars:     Size  Location     Type
+   899 ;;		None
+   900 ;; Return value:  Size  Location     Type
+   901 ;;                  1    wreg      void 
+   902 ;; Registers used:
+   903 ;;		wreg, status,2, status,0
+   904 ;; Tracked objects:
+   905 ;;		On entry : 0/0
+   906 ;;		On exit  : 0/0
+   907 ;;		Unchanged: 0/0
+   908 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   909 ;;      Params:         2       0       0       0       0
+   910 ;;      Locals:         0       0       0       0       0
+   911 ;;      Temps:          0       0       0       0       0
+   912 ;;      Totals:         2       0       0       0       0
+   913 ;;Total ram usage:        2 bytes
+   914 ;; Hardware stack levels used:    1
+   915 ;; This function calls:
+   916 ;;		Nothing
+   917 ;; This function is called by:
+   918 ;;		_init_timer
+   919 ;; This function uses a non-reentrant model
+   920 ;;
+   921                           
+   922                           
+   923                           ;psect for function _t_set
+   924  013A                     _t_set:	
+   925                           
+   926                           ;Sensor.c: 82: t_ant = t_actual;
+   927                           
+   928                           ;incstack = 0
+   929                           ; Regs used in _t_set: [wreg+status,2+status,0]
+   930  013A  0873               	movf	_t_actual+1,w
+   931  013B  1283               	bcf	3,5	;RP0=0, select bank0
+   932  013C  1303               	bcf	3,6	;RP1=0, select bank0
+   933  013D  00B0               	movwf	_t_ant+1
+   934  013E  0872               	movf	_t_actual,w
+   935  013F  00AF               	movwf	_t_ant
+   936                           
+   937                           ;Sensor.c: 83: t_actual = t_actual + t_next;
+   938  0140  0877               	movf	t_set@t_next,w
+   939  0141  0772               	addwf	_t_actual,w
+   940  0142  00F2               	movwf	_t_actual
+   941  0143  0878               	movf	t_set@t_next+1,w
+   942  0144  1803               	skipnc
+   943  0145  0A78               	incf	t_set@t_next+1,w
+   944  0146  0773               	addwf	_t_actual+1,w
+   945  0147  00F3               	movwf	_t_actual+1
+   946  0148  0008               	return
+   947  0149                     __end_of_t_set:	
+   948                           
+   949                           	psect	text7
+   950  0149                     __ptext7:	
+   951 ;; *************** function _check_t_changes *****************
+   952 ;; Defined at:
+   953 ;;		line 58 in file "Sensor.c"
+   954 ;; Parameters:    Size  Location     Type
+   955 ;;		None
+   956 ;; Auto vars:     Size  Location     Type
+   957 ;;		None
+   958 ;; Return value:  Size  Location     Type
+   959 ;;                  1    wreg      void 
+   960 ;; Registers used:
+   961 ;;		wreg, status,2
+   962 ;; Tracked objects:
+   963 ;;		On entry : 0/0
+   964 ;;		On exit  : 0/0
+   965 ;;		Unchanged: 0/0
+   966 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   967 ;;      Params:         0       0       0       0       0
+   968 ;;      Locals:         0       0       0       0       0
+   969 ;;      Temps:          0       0       0       0       0
+   970 ;;      Totals:         0       0       0       0       0
+   971 ;;Total ram usage:        0 bytes
+   972 ;; Hardware stack levels used:    1
+   973 ;; This function calls:
+   974 ;;		Nothing
+   975 ;; This function is called by:
+   976 ;;		_init_timer
+   977 ;; This function uses a non-reentrant model
+   978 ;;
+   979                           
+   980                           
+   981                           ;psect for function _check_t_changes
+   982  0149                     _check_t_changes:	
+   983                           
+   984                           ;Sensor.c: 60: if(millibolts != millibolts_aux) t_change_user = 1;
+   985                           
+   986                           ;incstack = 0
+   987                           ; Regs used in _check_t_changes: [wreg+status,2]
+   988  0149  0871               	movf	_millibolts_aux+1,w
+   989  014A  1283               	bcf	3,5	;RP0=0, select bank0
+   990  014B  1303               	bcf	3,6	;RP1=0, select bank0
+   991  014C  062E               	xorwf	_millibolts+1,w
+   992  014D  1D03               	skipz
+   993  014E  2951               	goto	u31_25
+   994  014F  0870               	movf	_millibolts_aux,w
+   995  0150  062D               	xorwf	_millibolts,w
+   996  0151                     u31_25:	
+   997  0151  1903               	skipnz
+   998  0152  2956               	goto	i1l712
+   999  0153  01F5               	clrf	_t_change_user
+  1000  0154  0AF5               	incf	_t_change_user,f
+  1001  0155  0008               	return
+  1002  0156                     i1l712:	
+  1003                           
+  1004                           ;Sensor.c: 61: else t_change_user = 0;
+  1005  0156  01F5               	clrf	_t_change_user
+  1006  0157  0008               	return
+  1007  0158                     __end_of_check_t_changes:	
+  1008  007E                     btemp	set	126	;btemp
+  1009  007E                     wtemp0	set	126
+
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        1
+    BSS         15
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      6      13
+    BANK0            80     11      20
+    BANK1            80      0       0
+    BANK3            96      0       0
+    BANK2            96      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _init_timer in COMMON
+
+    _init_timer->_t_set
+
+Critical Paths under _main in BANK0
+
+    _main->_t_bolt_value
+    _t_bolt_value->___awdiv
+
+Critical Paths under _init_timer in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _init_timer in BANK1
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _init_timer in BANK3
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _init_timer in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 0     0      0     705
+                    _check_t_voltage
+                       _t_bolt_value
+                    _timer_value_set
+ ---------------------------------------------------------------------------------
+ (1) _timer_value_set                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _t_bolt_value                                         2     2      0     705
+                                              9 BANK0      2     2      0
+                            ___awdiv
+ ---------------------------------------------------------------------------------
+ (2) ___awdiv                                              9     5      4     705
+                                              0 BANK0      9     5      4
+ ---------------------------------------------------------------------------------
+ (1) _check_t_voltage                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (3) _init_timer                                           4     4      0      75
+                                              2 COMMON     4     4      0
+                    _check_t_changes
+                              _t_set
+ ---------------------------------------------------------------------------------
+ (4) _t_set                                                2     0      2      75
+                                              0 COMMON     2     0      2
+ ---------------------------------------------------------------------------------
+ (4) _check_t_changes                                      0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 4
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _check_t_voltage
+   _t_bolt_value
+     ___awdiv
+   _timer_value_set
+
+ _init_timer (ROOT)
+   _check_t_changes
+   _t_set
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BANK3               60      0       0       9        0.0%
+BITBANK3            60      0       0       8        0.0%
+SFR3                 0      0       0       4        0.0%
+BITSFR3              0      0       0       4        0.0%
+BANK2               60      0       0      11        0.0%
+BITBANK2            60      0       0      10        0.0%
+SFR2                 0      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK1            50      0       0       6        0.0%
+SFR1                 0      0       0       2        0.0%
+BITSFR1              0      0       0       2        0.0%
+BANK0               50      B      14       5       25.0%
+BITBANK0            50      0       0       4        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR0              0      0       0       1        0.0%
+COMMON               E      6       D       1       92.9%
+BITCOMMON            E      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+DATA                 0      0      21      12        0.0%
+ABS                  0      0      21       3        0.0%
+NULL                 0      0       0       0        0.0%
+STACK                0      0       0       2        0.0%
+EEDATA             100      0       0       0        0.0%
+
+
+Microchip Technology PIC Macro Assembler V1.44 build -154322312 
+Symbol Table                                                                                   Sat Nov 25 18:29:43 2017
+
+                      l55 008A              ___awdiv@sign 0026                       l812 0082  
+                     l804 006F                       l822 0136                       l808 007A  
+                     l780 0038                       l862 011A                       l786 0043  
+                     l796 004B                       l798 0059                       u405 004E  
+                     u425 005A                       u505 00B6                       u435 0066  
+                     u445 0070                       u485 012F                       fsr0 0004  
+                    _T0SE 040C                      i1l69 00F6                      _TMR0 0001  
+                    _main 0101                      btemp 007E                      start 0012  
+         _check_t_changes 0149                     ?_main 0077           __end_of___awdiv 0087  
+                   _ANSEL 0188           ___awdiv@divisor 0020                     i1l712 0156  
+                   i1l750 00ED                     i1l748 00E5           ___awdiv@counter 0025  
+                   u31_25 0151                     _TRISA 0085                     _TRISB 0086  
+         _check_t_voltage 0122                     _t_ant 002F                     _t_set 013A  
+                   pclath 000A                     status 0003                     wtemp0 007E  
+         __initialization 0015              __end_of_main 0122                    ??_main 002B  
+__size_of_timer_value_set 000D                    _ADRESH 001E                    _ADRESL 009E  
+                  ?_t_set 0077          ___awdiv@dividend 0022                    _ANSELH 0189  
+ __end_of_check_t_changes 0158                 ??___awdiv 0024   __end_of_check_t_voltage 013A  
+        ___awdiv@quotient 0027                    saved_w 007E   __end_of__initialization 0028  
+           ?_t_bolt_value 0077            __pcstackCOMMON 0077              __pidataBANK0 0165  
+           __end_of_t_set 0149            _OPTION_REGbits 0081                   ??_t_set 0079  
+              __pbssBANK0 002B          ?_check_t_changes 0077         ??_timer_value_set 0020  
+          ??_t_bolt_value 0029                __pmaintext 0101                __pintentry 0004  
+        ?_check_t_voltage 0077             _t_change_user 0075               t_set@t_next 0077  
+                 ___awdiv 002C                   _adc_val 0031                _init_timer 00D1  
+                 __ptext1 0158                   __ptext2 0087                   __ptext3 002C  
+                 __ptext4 0122                   __ptext5 00D1                   __ptext6 013A  
+                 __ptext7 0149                _millibolts 002D      end_of_initialization 0028  
+              _t_sys_cont 002B      __end_of_t_bolt_value 00D1               ?_init_timer 0077  
+     start_initialization 0015           _timer_value_set 0158               __pdataBANK0 0033  
+             __pbssCOMMON 0070                 ___latbits 0002             __pcstackBANK0 0020  
+     __size_of_init_timer 0030  __size_of_check_t_changes 000F                  ?___awdiv 0020  
+   __size_of_t_bolt_value 004A   __end_of_timer_value_set 0165  __size_of_check_t_voltage 0018  
+          __size_of_t_set 000F         interrupt_function 0004              _t_bolt_value 0087  
+              _ADCON0bits 001F          __size_of___awdiv 005B              ??_init_timer 0079  
+        ?_timer_value_set 0077         ??_check_t_changes 0077         ??_check_t_voltage 0020  
+           __size_of_main 0021                  _t_change 0076                  _t_actual 0072  
+          _millibolts_aux 0070        __end_of_init_timer 0101                _INTCONbits 000B  
+                intlevel1 0000              _t_sys_update 0074              _t_sys_switch 0033  
